@@ -9,5 +9,4 @@ public class PoleroidApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PoleroidApplication.class, args);
 	}
-
 }
