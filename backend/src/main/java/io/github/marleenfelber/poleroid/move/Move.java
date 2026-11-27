@@ -52,4 +52,60 @@ public class Move {
     @CollectionTable(name = "move_alias", joinColumns = @JoinColumn(name = "move_id"))
     @Column(name = "alias", nullable = false, length = 100)
     private Set<String> aliases = new HashSet<>(); // a collection of aliases without duplicates, set starts empty instead of null; no separate Alias class
+
+    // empty constructor, required by JPA (standard to save & load Java objects in database)
+    protected Move() {}
+
+    // constructor with all required fields (description, categories & aliases are optional)
+    public Move(String name, PoleMode poleMode, Level level) {
+        this.name = name;
+        this.poleMode = poleMode;
+        this.level = level;
+    }
+
+    // getters
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public PoleMode getPoleMode() {
+        return poleMode;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public Set<String> getAliases() {
+        return aliases;
+    }
+
+    // setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPoleMode(PoleMode poleMode) {
+        this.poleMode = poleMode;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
